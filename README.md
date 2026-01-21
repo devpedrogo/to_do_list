@@ -1,39 +1,39 @@
-📝 TaskFlow - Gerenciador de Tarefas
-O TaskFlow é um gerenciador de listas (To-Do List) moderno e minimalista construído com React. A aplicação foi projetada para ajudar na organização diária, garantindo que suas tarefas não se percam, mesmo que você feche o navegador.
+# 📝 TaskFlow - Gerenciador de Tarefas
 
-🔗 Demonstração Online
-Acesse o projeto pronto para uso aqui:
+O **TaskFlow** é um gerenciador de listas (To-Do List) moderno e minimalista construído com **React**. A aplicação foi projetada para ajudar na organização diária, garantindo que suas tarefas permaneçam salvas mesmo após fechar o navegador ou atualizar a página.
 
-👉 [Link para o seu GitHub Pages aqui]
+## 🔗 Demonstração Online
 
-✨ Funcionalidades Principais
-Persistência Automática: Utiliza a API do Local Storage para manter seus dados salvos localmente no navegador.
+Acesse o projeto em tempo real aqui:  
+👉 **[CLIQUE AQUI PARA ACESSAR O APP](https://devpedrogo.github.io/to_do_list/)**
 
-Gestão de Estado: Adição, conclusão e exclusão de tarefas em tempo real.
+---
 
-Interface Limpa: Design focado na experiência do usuário e na facilidade de leitura.
+## ✨ Funcionalidades
 
-Hospedagem CI/CD: Implantado automaticamente via GitHub Actions/Pages.
+* **Adicionar Tarefas:** Crie novos itens rapidamente com um campo de entrada intuitivo.
+* **Concluir Tarefas:** Marque as atividades finalizadas para manter o controle visual.
+* **Remover Tarefas:** Exclua itens da lista individualmente.
+* **Persistência com Local Storage:** Suas tarefas ficam guardadas no seu navegador, sem necessidade de banco de dados externo.
+* **Design Responsivo:** Interface otimizada para desktops e dispositivos móveis.
 
-🛠️ Tecnologias e Conceitos
-React JS: Componentização e Hooks (useState, useEffect).
+## 🛠️ Tecnologias e Conceitos
 
-JavaScript (ES6+): Manipulação de arrays e objetos.
+* **React JS:** Biblioteca principal para construção da interface.
+* **Hooks (useState, useEffect):** Gerenciamento de estado e efeitos colaterais.
+* **JavaScript (ES6+):** Manipulação de listas (map, filter) e objetos.
+* **CSS3:** Estilização moderna e layout flexível.
+* **Local Storage API:** Persistência de dados localmente.
 
-CSS3: Estilização responsiva e estados de hover/foco.
+## 🧠 Como funciona a Persistência?
 
-Local Storage: Persistência de dados sem necessidade de um banco de dados externo.
+A aplicação utiliza o ciclo de vida do React para garantir que os dados nunca sejam perdidos:
 
-🧠 Como o Local Storage é aplicado?
-Diferente de apps que perdem os dados ao atualizar a página (F5), este projeto utiliza um ciclo de persistência simples:
+1.  **Carregamento:** Ao iniciar, o app lê os dados salvos em `localStorage`.
+2.  **Sincronização:** Toda vez que uma tarefa é criada, editada ou removida, o `useEffect` atualiza automaticamente o banco de dados local do navegador.
 
-Leitura Inicial: Ao carregar o app, o React verifica se existe a chave tasks no navegador.
-
-Sincronização: Sempre que o estado da lista muda, o useEffect dispara uma atualização para o armazenamento local.
-
-JavaScript
-
-// Exemplo da lógica utilizada
+```javascript
+// Exemplo da lógica de persistência
 useEffect(() => {
-  localStorage.setItem('minhas-tarefas', JSON.stringify(tarefas));
-}, [tarefas]);
+  localStorage.setItem('task-list-data', JSON.stringify(tasks));
+}, [tasks]);
